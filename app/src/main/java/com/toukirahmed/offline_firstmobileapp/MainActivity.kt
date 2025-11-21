@@ -31,6 +31,7 @@ import com.toukirahmed.offline_firstmobileapp.presentation.navigation.Navigation
 import com.toukirahmed.offline_firstmobileapp.presentation.ui.theme.OfflineFirstMobileAppTheme
 import com.toukirahmed.offline_firstmobileapp.presentation.utils.InternetSnackBar
 import com.toukirahmed.offline_firstmobileapp.service.LocationForegroundService
+import com.toukirahmed.offline_firstmobileapp.utils.Constants
 import com.toukirahmed.offline_firstmobileapp.utils.LocationUtils
 import com.toukirahmed.offline_firstmobileapp.utils.NetworkObserver
 import dagger.hilt.android.AndroidEntryPoint
@@ -83,7 +84,7 @@ class MainActivity : ComponentActivity() {
         } else {
             val locationRequest = LocationRequest.Builder(
                 Priority.PRIORITY_HIGH_ACCURACY,
-                TimeUnit.MINUTES.toMillis(10)
+                TimeUnit.MINUTES.toMillis(Constants.LOCATION_UPDATE_INTERVAL_MINUTES)
             ).build()
             val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
             val client = LocationServices.getSettingsClient(this)

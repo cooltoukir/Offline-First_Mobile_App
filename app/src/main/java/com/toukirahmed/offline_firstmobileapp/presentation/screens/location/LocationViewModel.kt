@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LocationViewModel @Inject constructor(
-    private val getLast10LocationsUseCase: GetLast10LocationsUseCase
+    getLast10LocationsUseCase: GetLast10LocationsUseCase
 ) : ViewModel() {
 
     fun startLocationService(context: Context) {
