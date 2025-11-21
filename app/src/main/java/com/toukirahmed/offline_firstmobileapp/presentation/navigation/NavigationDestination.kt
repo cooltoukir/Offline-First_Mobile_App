@@ -4,15 +4,16 @@ import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
 sealed interface NavigationDestination : NavKey {
-    @Serializable
-    data object MovieDiscoveryScreen : NavigationDestination
 
     @Serializable
-    data class MovieDetailsScreen(val movieId: Int) : NavigationDestination
+    data object Splash : NavigationDestination
 
     @Serializable
-    data object FavoritesScreen : NavigationDestination
+    data object Login : NavigationDestination
 
     @Serializable
-    data object MovieSearchScreen : NavigationDestination
+    data object Home : NavigationDestination
+
+    @Serializable
+    data object DataEntry : NavigationDestination
 }

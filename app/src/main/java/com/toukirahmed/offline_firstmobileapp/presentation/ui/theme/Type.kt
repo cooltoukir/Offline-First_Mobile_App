@@ -1,4 +1,4 @@
-package com.toukirahmed.offline_firstmobileapp.ui.theme
+package com.toukirahmed.offline_firstmobileapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

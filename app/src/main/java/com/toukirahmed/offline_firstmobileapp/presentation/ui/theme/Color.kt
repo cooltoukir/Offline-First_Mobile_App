@@ -1,4 +1,4 @@
-package com.toukirahmed.offline_firstmobileapp.ui.theme
+package com.toukirahmed.offline_firstmobileapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

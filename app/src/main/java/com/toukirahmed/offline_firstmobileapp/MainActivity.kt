@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -16,7 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.toukirahmed.offline_firstmobileapp.presentation.navigation.NavigationHost
 import com.toukirahmed.offline_firstmobileapp.presentation.utils.InternetSnackBar
-import com.toukirahmed.offline_firstmobileapp.ui.theme.OfflineFirstMobileAppTheme
+import com.toukirahmed.offline_firstmobileapp.presentation.ui.theme.OfflineFirstMobileAppTheme
 import com.toukirahmed.offline_firstmobileapp.utils.NetworkObserver
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,9 +44,6 @@ class MainActivity : ComponentActivity() {
 
                     Box(modifier = Modifier.fillMaxSize()) {
                         NavigationHost(
-                            Modifier
-                                .fillMaxSize()
-                                .padding(innerPadding)
                         )
 
                         InternetSnackBar(

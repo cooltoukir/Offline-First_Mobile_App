@@ -1,6 +1,5 @@
-package com.toukirahmed.offline_firstmobileapp.ui.theme
+package com.toukirahmed.offline_firstmobileapp.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
