@@ -14,6 +14,8 @@ import com.toukirahmed.offline_firstmobileapp.presentation.screens.dataentry.Dat
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.dataentry.DataEntryViewModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.drawer.DrawerViewModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.home.HomeScreen
+import com.toukirahmed.offline_firstmobileapp.presentation.screens.location.LocationHistoryScreen
+import com.toukirahmed.offline_firstmobileapp.presentation.screens.location.LocationViewModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.login.LoginScreen
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.login.LoginViewModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.main.MainLayout
@@ -23,6 +25,7 @@ import com.toukirahmed.offline_firstmobileapp.presentation.screens.splash.Splash
 @Composable
 fun NavigationHost() {
     val backStack = rememberNavBackStack(NavigationDestination.Splash)
+    val locationViewModel: LocationViewModel = hiltViewModel()
 
     Scaffold { innerPadding ->
         NavDisplay(
@@ -46,7 +49,8 @@ fun NavigationHost() {
                         onNavigateHome = {
                             backStack.clear()
                             backStack.add(NavigationDestination.Home)
-                        }
+                        },
+                        locationViewModel = locationViewModel
                     )
                 }
 
@@ -70,14 +74,15 @@ fun NavigationHost() {
                             when (item.title) {
                                 "Home" -> backStack.add(NavigationDestination.Home)
                                 "Data Entry" -> backStack.add(NavigationDestination.DataEntry)
-//                                "Settings" -> backStack.add(NavigationDestination.Settings)
+                                "Location History" -> backStack.add(NavigationDestination.LocationHistory)
 //                                "Reports" -> backStack.add(NavigationDestination.Reports)
                                 "Logout" -> drawerVM.logout {
                                     backStack.clear()
                                     backStack.add(NavigationDestination.Login)
                                 }
                             }
-                        }
+                        },
+                        locationViewModel = locationViewModel
                     ) {
                         HomeScreen()
                     }
@@ -93,16 +98,40 @@ fun NavigationHost() {
                             when (item.title) {
                                 "Home" -> backStack.add(NavigationDestination.Home)
                                 "Data Entry" -> {}
-//                                "Settings" -> backStack.add(NavigationDestination.Settings)
+                                "Location History" -> backStack.add(NavigationDestination.LocationHistory)
 //                                "Reports" -> backStack.add(NavigationDestination.Reports)
                                 "Logout" -> drawerVM.logout {
                                     backStack.clear()
                                     backStack.add(NavigationDestination.Login)
                                 }
                             }
-                        }
+                        },
+                        locationViewModel = locationViewModel
                     ) {
                         DataEntryScreen(viewModel = vm)
+                    }
+                }
+
+                entry<NavigationDestination.LocationHistory> {
+                    val drawerVM: DrawerViewModel = hiltViewModel()
+                    val locationVM: LocationViewModel = hiltViewModel()
+                    MainLayout(
+                        menuItems = drawerVM.menuItems,
+                        selectedItem = "Location History",
+                        onMenuClick = { item ->
+                            when (item.title) {
+                                "Home" -> backStack.add(NavigationDestination.Home)
+                                "Data Entry" -> backStack.add(NavigationDestination.DataEntry)
+                                "Location History" -> {}
+                                "Logout" -> drawerVM.logout {
+                                    backStack.clear()
+                                    backStack.add(NavigationDestination.Login)
+                                }
+                            }
+                        },
+                        locationViewModel = locationVM
+                    ) {
+                        LocationHistoryScreen(viewModel = locationVM)
                     }
                 }
             }

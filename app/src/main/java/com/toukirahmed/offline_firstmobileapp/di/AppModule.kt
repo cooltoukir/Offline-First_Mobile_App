@@ -2,11 +2,14 @@ package com.toukirahmed.offline_firstmobileapp.di
 
 import android.content.Context
 import com.toukirahmed.offline_firstmobileapp.data.local.dao.DataEntryDao
+import com.toukirahmed.offline_firstmobileapp.data.local.dao.LocationDao
 import com.toukirahmed.offline_firstmobileapp.data.local.datastore.UserPreferences
 import com.toukirahmed.offline_firstmobileapp.data.repository.AuthRepositoryImpl
 import com.toukirahmed.offline_firstmobileapp.data.repository.DataEntryRepositoryImpl
+import com.toukirahmed.offline_firstmobileapp.data.repository.LocationRepositoryImpl
 import com.toukirahmed.offline_firstmobileapp.domain.repository.AuthRepository
 import com.toukirahmed.offline_firstmobileapp.domain.repository.DataEntryRepository
+import com.toukirahmed.offline_firstmobileapp.domain.repository.LocationRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,4 +36,10 @@ object AppModule {
     fun provideDataEntryRepository(
         dataEntryDao: DataEntryDao
     ): DataEntryRepository = DataEntryRepositoryImpl(dao = dataEntryDao)
+
+    @Provides
+    @Singleton
+    fun provideLocationRepository(
+        dao: LocationDao
+    ): LocationRepository = LocationRepositoryImpl(dao = dao)
 }

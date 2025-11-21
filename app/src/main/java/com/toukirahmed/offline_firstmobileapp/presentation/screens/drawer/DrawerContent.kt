@@ -15,16 +15,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.toukirahmed.offline_firstmobileapp.domain.model.MenuItemModel
+import com.toukirahmed.offline_firstmobileapp.presentation.screens.location.LocationViewModel
 
 @Composable
 fun DrawerContent(
     menuItems: List<MenuItemModel>,
     selectedItem: String,
-    onMenuClick: (MenuItemModel) -> Unit
+    onMenuClick: (MenuItemModel) -> Unit,
+    locationViewModel: LocationViewModel
 ) {
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,7 +51,12 @@ fun DrawerContent(
                     .background(
                         if (isSelected) Color(0xFF3D3D5C) else Color.Transparent
                     )
-                    .clickable { onMenuClick(item) }
+                    .clickable {
+                        if (item.title == "Logout") {
+                            locationViewModel.stopLocationService(context)
+                        }
+                        onMenuClick(item)
+                    }
                     .padding(14.dp)
             ) {
                 Icon(

@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.toukirahmed.offline_firstmobileapp.domain.model.MenuItemModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.drawer.DrawerContent
+import com.toukirahmed.offline_firstmobileapp.presentation.screens.location.LocationViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,6 +28,7 @@ fun MainLayout(
     menuItems: List<MenuItemModel>,
     selectedItem: String,
     onMenuClick: (MenuItemModel) -> Unit,
+    locationViewModel: LocationViewModel,
     content: @Composable () -> Unit
 ) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -42,7 +44,8 @@ fun MainLayout(
                 onMenuClick = {
                     scope.launch { drawerState.close() }
                     onMenuClick(it)
-                }
+                },
+                locationViewModel = locationViewModel
             )
         }
     ) {

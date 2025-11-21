@@ -3,6 +3,7 @@ package com.toukirahmed.offline_firstmobileapp.di
 import android.content.Context
 import androidx.room.Room
 import com.toukirahmed.offline_firstmobileapp.data.local.dao.DataEntryDao
+import com.toukirahmed.offline_firstmobileapp.data.local.dao.LocationDao
 import com.toukirahmed.offline_firstmobileapp.data.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -27,4 +28,7 @@ object DatabaseModule {
 
     @Provides
     fun provideDataEntryDao(db: AppDatabase): DataEntryDao = db.dataEntryDao()
+
+    @Provides
+    fun provideLocationDao(db: AppDatabase): LocationDao = db.locationDao()
 }

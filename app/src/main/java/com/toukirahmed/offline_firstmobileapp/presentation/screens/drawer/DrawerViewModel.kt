@@ -16,7 +16,7 @@ class DrawerViewModel @Inject constructor(
     val menuItems = listOf(
         MenuItemModel(1, "Home", android.R.drawable.ic_menu_view),
         MenuItemModel(2, "Data Entry", android.R.drawable.ic_menu_manage),
-        MenuItemModel(3, "Settings", android.R.drawable.ic_menu_preferences),
+        MenuItemModel(3, "Location History", android.R.drawable.ic_menu_preferences),
         MenuItemModel(4, "Reports", android.R.drawable.ic_menu_agenda),
         MenuItemModel(5, "Logout", android.R.drawable.ic_lock_power_off)
     )

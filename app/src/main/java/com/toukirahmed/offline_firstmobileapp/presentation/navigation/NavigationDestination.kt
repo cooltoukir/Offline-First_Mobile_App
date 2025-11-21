@@ -16,4 +16,7 @@ sealed interface NavigationDestination : NavKey {
 
     @Serializable
     data object DataEntry : NavigationDestination
+
+    @Serializable
+    data object LocationHistory : NavigationDestination
 }

@@ -9,12 +9,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.toukirahmed.offline_firstmobileapp.presentation.screens.location.LocationViewModel
 
 @Composable
 fun SplashScreen(
     onNavigateHome: () -> Unit,
     onNavigateLogin: () -> Unit,
-    viewModel: SplashViewModel
+    viewModel: SplashViewModel,
+    locationViewModel: LocationViewModel
 ) {
     val isLoggedIn by viewModel.isLoggedIn.collectAsState()
 
