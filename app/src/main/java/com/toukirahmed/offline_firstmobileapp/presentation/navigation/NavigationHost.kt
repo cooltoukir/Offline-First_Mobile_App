@@ -11,6 +11,7 @@ import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.dataentry.DataEntryScreen
+import com.toukirahmed.offline_firstmobileapp.presentation.screens.dataentry.DataEntryViewModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.drawer.DrawerViewModel
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.home.HomeScreen
 import com.toukirahmed.offline_firstmobileapp.presentation.screens.login.LoginScreen
@@ -84,6 +85,7 @@ fun NavigationHost() {
 
                 entry<NavigationDestination.DataEntry> {
                     val drawerVM: DrawerViewModel = hiltViewModel()
+                    val vm: DataEntryViewModel = hiltViewModel()
                     MainLayout(
                         menuItems = drawerVM.menuItems,
                         selectedItem = "Data Entry",
@@ -100,7 +102,7 @@ fun NavigationHost() {
                             }
                         }
                     ) {
-                        DataEntryScreen()
+                        DataEntryScreen(viewModel = vm)
                     }
                 }
             }
